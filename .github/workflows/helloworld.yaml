@@ -8,10 +8,10 @@ on: #events to trigger the pipeline
 
 jobs:
     hello_world: #name of the job
-    runs-on: ubuntu-latest #it defines the type of environment where the pipeline is going to execute
-    steps:
+      runs-on: ubuntu-latest #it defines the type of environment where the pipeline is going to execute
+      steps:
         - name: "print the hello world"
           run: echo "Hello World"
 
         - name: "print the data"
-          run: data
+          run: date
