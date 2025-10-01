@@ -1,0 +1,17 @@
+name: "Hello world workflow" #name of the workflow
+
+on: #events to trigger the pipeline
+    push: #push is an event
+        branches: #on which branches the trigger is going to work
+            - master
+            - production
+
+jobs:
+    hello_world: #name of the job
+    runs-on: ubuntu-latest #it defines the type of environment where the pipeline is going to execute
+    steps:
+        - name: "print the hello world"
+          run: echo "Hello World"
+
+        - name: "print the data"
+          run: data
