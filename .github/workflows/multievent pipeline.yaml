@@ -1,43 +1,45 @@
-name: "Multi Event Pipeline/Workflow"
+name: "Multi event pipeline"
 
 on:
     push:
         branches:
             - master
-            - production
+            - test
 
     pull_request:
         branches:
             - master
         types:
-            - closed
             - opened
-
-
-    workflow_dispatch: 
-  
+            - closed
 
 jobs:
     on-push:
         if: github.event_name == 'push'
-        runs-on: ubuntu-latest
-
+        runs-on: ubuntu latest
         steps:
-            - name: "Running when the push happens"
+            - name: "run when the push happens in repo"
               run: echo "Running on push"
 
     pull-request:
         if: github.event_name == 'pull_request'
-        runs-on: ubuntu-latest
-
+        runs-on: ubuntu latest
         steps:
-            - name: "Running on pull request"
-              run: echo "Running on pull request"
+            - name: "run when the pull request happens"
+              run: "Running on pull request"
 
-
-    on_pull_request_opened:
+    on-pull-request-opened:
         if: github.event_name == 'pull_request' && github.event.action == 'opened'
-        runs-on: ubuntu-latest
+        runs-on: ubuntu latest
         steps:
-            - name: "Runs on pull request opened"
-              run: echo "Pull request opened"
+            - name: "run when the pull request opens"
+              run: "Running on pull request is opened"
+
+    on-pull-request-closed:
+        if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        runs-on: ubuntu latest
+        steps:
+            - name: "run when the pull request closed"
+              run: "Running on pull request is closed"
+
+
